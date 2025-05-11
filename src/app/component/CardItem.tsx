@@ -5,15 +5,17 @@ import AlertWarning from "@/app/component/AlertWarning";
 
 interface CardItemSkip {
   data: SkipResponse;
+  id: number | undefined;
   onClick: (e: SkipResponse) => void;
 }
-const CardItem: React.FC<CardItemSkip> = ({ data, onClick }) => {
+const CardItem: React.FC<CardItemSkip> = ({ data, id, onClick }) => {
+  const isSelected = id === data.id;
   return (
     <div
       onClick={() => {
         onClick(data);
       }}
-      className="group relative rounded-lg border-2 p-4 md:p-6 transition-all
+      className="h-auto group relative rounded-lg border-2 p-4 md:p-6 transition-all
         border-[#2A2A2A] hover:border-[#0037C1]/50
         bg-[#1C1C1C] text-white cursor-pointer"
     >
@@ -62,8 +64,12 @@ const CardItem: React.FC<CardItemSkip> = ({ data, onClick }) => {
             </span>
           </div>
         </div>
-        <button className="font-bold w-full py-2.5 md:py-3 px-4 rounded-md transition-all flex items-center justify-center space-x-2 bg-[#2A2A2A] text-white hover:bg-[#3A3A3A] hover:border-[#0037C1] false">
-          <span>Select This Skip</span>
+        <button
+          className={`font-bold w-full py-.5 md:py-3 px-4 rounded-md transition-all flex items-center justify-center space-x-2 ${
+            isSelected ? "bg-[#0037C1]" : "bg-[#2A2A2A]"
+          } text-white  hover:border-[#0037C1] false`}
+        >
+          <span>{isSelected ? <>Selected</> : <>Select This Skip</>}</span>
         </button>
       </div>
     </div>

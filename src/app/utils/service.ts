@@ -2,7 +2,7 @@ import axios from "axios";
 import { SkipResponse } from "@/app/model/index";
 
 const API = axios.create({
-  baseURL: "https://app.wewantwaste.co.uk",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 60000,
 });
 

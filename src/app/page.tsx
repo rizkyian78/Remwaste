@@ -47,6 +47,8 @@ export default function Home() {
                 response.map((skip) => {
                   return (
                     <CardItem
+                      id={selectedSkip?.id}
+                      key={skip.id}
                       data={skip}
                       onClick={(e) => {
                         setSelectedSkip(e);
