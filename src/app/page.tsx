@@ -11,7 +11,6 @@ export default function Home() {
   const [response, setResponse] = React.useState<SkipResponse[] | undefined>();
   const [loading, setLoading] = React.useState(true);
   const [selectedSkip, setSelectedSkip] = React.useState<SkipResponse>();
-  const buttonRef = React.useRef(null);
 
   React.useEffect(() => {
     if (!response) {
@@ -20,7 +19,7 @@ export default function Home() {
         setResponse(res);
       });
     }
-  }, [buttonRef]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#121212] text-white">

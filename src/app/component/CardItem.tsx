@@ -2,6 +2,7 @@ import { SkipResponse } from "@/app/model/Waste";
 import { getImageBasedOnSize } from "@/app/utils/helper";
 import AlertDanger from "@/app/component/AlertDanger";
 import AlertWarning from "@/app/component/AlertWarning";
+import Image from "next/image";
 
 interface CardItemSkip {
   data: SkipResponse;
@@ -26,9 +27,11 @@ const CardItem: React.FC<CardItemSkip> = ({ data, id, onClick }) => {
           "opacity-50 cursor-not-allowed"
         }`}
       >
-        <img
+        <Image
           src={getImageBasedOnSize(data.size)}
-          alt="4 Yard Skip"
+          alt={`${data.size} Yard Skip`}
+          width={400}
+          height={300}
           className="w-full h-40 md:h-48 object-cover rounded-md mb-4"
         />
 
